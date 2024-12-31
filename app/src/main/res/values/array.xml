@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="xposedScope">
+
+        <item>com.tencent.mm</item>
+
+    </array>
+
+</resources>
