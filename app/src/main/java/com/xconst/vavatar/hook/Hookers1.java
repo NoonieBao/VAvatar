@@ -248,15 +248,12 @@ public class Hookers1 {
         XposedBridge.log(tag + " 尝试注入Vavatar UI");
 
         Class<?> headImgNewPreferenceClass = XposedHelpers.findClassIfExists(HeadImgNewPreferenceClassname, classLoader);
-        XposedBridge.log(tag + headImgNewPreferenceClass);
         Method targetMethod = null;
 
         for (Method declaredMethod : headImgNewPreferenceClass.getDeclaredMethods()) {
-            XposedBridge.log(tag + " headImgNewPreferenceClass declaredMethod: " + declaredMethod);
 
             // 获取方法参数
             Parameter[] parameters = declaredMethod.getParameters();
-            XposedBridge.log(tag + " headImgNewPreferenceClass parameters: " + Arrays.toString(parameters));
 
             // 如果方法有一个参数并且这个参数的类型是 View
             if (parameters.length == 1 && parameters[0].getType().equals(View.class)) {
@@ -328,10 +325,10 @@ public class Hookers1 {
         Class<?> mainUiClassClass = XposedHelpers.findClassIfExists(mainUiClassName, classLoader);
 
         if(toastConfig){
-            XposedBridge.log(tag + " networkClass " + networkClass
-                    + " realMethodParamTypeClass " + realMethodParamTypeClass
-                    + " methodParamTypeClass " + methodParamTypeClass
-                    + " mainUiClassClass " + mainUiClassClass);
+            XposedBridge.log(tag + " networkClass " + (networkClass!=null)
+                    + " realMethodParamTypeClass " + (realMethodParamTypeClass!=null)
+                    + " methodParamTypeClass " + (methodParamTypeClass!=null)
+                    + " mainUiClassClass " + (mainUiClassClass!=null));
         }
 
 

@@ -65,7 +65,7 @@ public class Vui implements View.OnClickListener {
         shouldDownload.setOnCheckedChangeListener((buttonView, isChecked) -> {
             setViewGroupsVisibility(isChecked, downloadUrl, downloadFre);
         });
-        autoDownloadTv.setText("自动从指定url下载图片到`默认头像路径`。要求1:1，jpg或者png格式。请确保来源可信。");
+        autoDownloadTv.setText("自动从指定url下载图片到`默认头像路径`，请确保来源可信。图片要求1:1，jpg或者png格式。");
         downloadUrl.setText(Mp.getDownloadUrl(context));
         downloadFre.setText(String.valueOf(Mp.getDownloadFre(context)));
         shouldDownload.setChecked(Mp.downloadSwitch(context));
@@ -87,12 +87,12 @@ public class Vui implements View.OnClickListener {
 
 
         Button gotoGithub = new Button(context);
-        gotoGithub.setText("反馈&帮助");
+        gotoGithub.setText("反馈&开源&帮助");
         gotoGithub.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/NoonieBao/VAvatar"));
             context.startActivity(intent);
         });
-
+        
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);

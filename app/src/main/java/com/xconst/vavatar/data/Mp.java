@@ -173,6 +173,10 @@ public class Mp {
     }
 
     public static boolean shouldDownloadNow(Context context) {  //现在是否要下载头像
+        boolean aSwitch = downloadSwitch(context);
+        if(!aSwitch){
+            return false;
+        }
         long l = calculateTimeDifference(context, LAST_DOWNLOAD_TIME);
         if (l > getDownloadFre(context)) {
             return true;

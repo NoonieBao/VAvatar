@@ -45,7 +45,6 @@ public class HookEntry implements IXposedHookLoadPackage {
             for (String string : strings) {
                 if (version.contains(string)) {
                     Configuration.SETTING = Configuration.SETTING_SET.get(string);
-                    XposedBridge.log(TAG + Configuration.SETTING);
                     XposedBridge.log(TAG + "查找到已此版本的配置" + version);
 
                     return true;

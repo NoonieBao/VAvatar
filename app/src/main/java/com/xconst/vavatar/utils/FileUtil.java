@@ -15,9 +15,9 @@ import de.robv.android.xposed.XposedBridge;
 public class FileUtil {
 
     public static final String nextTick="nextTick";
-    public static final String nextAvatar=nextTick+".jpg";
+    public static final String nextAvatar=nextTick+".png";
 
-    public static final String theUsedJpg ="Used.jpg";
+    public static final String theUsedJpg ="Used.png";
     public static final String TAG = HookEntry.TAG;
 
     final static String reDir="vavatar";
