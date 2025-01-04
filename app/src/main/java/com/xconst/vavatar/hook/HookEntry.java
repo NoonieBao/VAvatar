@@ -2,28 +2,19 @@ package com.xconst.vavatar.hook;
 
 import static java.lang.String.format;
 
-import android.app.Application;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import dalvik.system.BaseDexClassLoader;
-import dalvik.system.PathClassLoader;
 import de.robv.android.xposed.IXposedHookLoadPackage;
-import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class HookEntry implements IXposedHookLoadPackage {
 
-    public static final String TAG = "vavatar";
+    public static final String TAG = "vvavatar ";
 
     final static String packageName2 = "com.tencent.mm";
 
@@ -31,21 +22,19 @@ public class HookEntry implements IXposedHookLoadPackage {
     static String version = null;
 
 
-    final static String modelAvatarU0Classname = "modelAvatarU0Classname";      // f执行时候参数类型_运行时候
-    final static String l70k1Classname = "l70k1Classname";     //f的调用者类型
-    final static String modelBaseK1Classname = "modelBaseK1Classname";     //f方法的参数类型_多态
+    final static String NETWORK_CLASS_NAME = "NETWORK_CLASS_NAME";     //（获取f的调用者的方法）的工具类
+    final static String METHOD_PARAM_TYPE_NAME = "modelBaseK1Classname";     //f方法的参数类型
+
+    final static String REAL_METHOD_PARAM_TYPE_NAME = "modelAvatarU0Classname";      // f执行时候参数实例化的类型
+
+    final static String NETWORK_GET_METHOD_NAME = "methodName0";
+    final static String NETWORK_START_METHOD_NAME = "methodName1";
+
+    final static String MAIN_UI_CLASS_NAME = "MAIN_UI_CLASS_NAME";
 
     final static Map<String, Map<String, String>> SETTING_SET = new HashMap<String, Map<String, String>>() {{
-        put("2580", new HashMap<String, String>() {{
-            put(modelAvatarU0Classname, "com.tencent.mm.modelavatar.u0");  //8.0.48
-            put(l70k1Classname, "l70.k1");
-            put(modelBaseK1Classname, "com.tencent.mm.modelbase.k1");
-        }});
-        put("2701", new HashMap<String, String>() {{    //8.0.50
-            put(modelAvatarU0Classname, "com.tencent.mm.modelavatar.r");
-            put(l70k1Classname, "v50.z");
-            put(modelBaseK1Classname, "hd0.y");
-        }});
+        
+
     }};
 
     static Map<String, String> SETTING;
@@ -88,16 +77,6 @@ public class HookEntry implements IXposedHookLoadPackage {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
 
 
-        String classname = "v50.z";
-
-        Class<?> classIfExists = XposedHelpers.findClassIfExists(classname, loadPackageParam.classLoader);
-
-        XposedBridge.log(TAG+classIfExists);
-
-
-        if (true) {
-            return;
-        }
         if (loadPackageParam.packageName.
 
                 equals(packageName2)) {
@@ -105,61 +84,17 @@ public class HookEntry implements IXposedHookLoadPackage {
 
             boolean isGotSetting = initSetting(loadPackageParam);
 
-
             if (!isGotSetting) {
+                XposedBridge.log(TAG+"未适配此版本");
                 return;
             }
 
 
-//            Hookers1.test(loadPackageParam);
-//            Hookers1.hookLog(loadPackageParam);
+            Hookers1.hookToInsertMySettingUI(loadPackageParam);
 
-//            Hookers1.hookProfileHdHeadImg(loadPackageParam);
-//            Hookers1.hookProfileHdHeadImg(loadPackageParam);
-//            Hookers1.hookFinderCropAvatarUI(loadPackageParam);
-//            Hookers1.hookPlatformToolsL2(loadPackageParam);
-//            Hookers1.hookModelAvatarU0(loadPackageParam);
-//            Hookers1.hookModelbaseI2(loadPackageParam);
-
-//            Hookers1.hookPreviewLastHdHeadImg(loadPackageParam);
-//            Hookers1.hookS6(loadPackageParam);
-//            Hookers1.hookYa2B(loadPackageParam);
+            Hookers1.hookOnResume(loadPackageParam);            // 触发器
 
 
-//            Hookers1.hookPreviewHdHeadImg(loadPackageParam);
-
-//            Hookers1.hookY(loadPackageParam);
-//            Hookers1.hookModelAvatarV0(loadPackageParam);
-//            Hookers1.hookPreviewHdHeadImgM6(loadPackageParam);
-//            Hookers1.hookAllM6Relevant(loadPackageParam);
-//            Hookers1.hookModelAvatarV0B(loadPackageParam);      // B方法是关键的
-
-//            Hookers1.hookL70K1(loadPackageParam);
-//            Hookers1.hookModelAvatarU0(loadPackageParam);
-
-
-//            Hookers1.hookGetHdHeadImageGalleryView(loadPackageParam);
-
-//            Hookers1.hookSetting(loadPackageParam);/// 可用
-//            Hookers1.hookOnclick(loadPackageParam);/// 可用
-//            Hookers1.hookSetText(loadPackageParam);/// 可用
-
-
-//            Hookers1.avatarHook(loadPackageParam);/// 可用
-
-//            Hookers1.hookAttach(loadPackageParam);
-
-
-            Hookers1.
-
-                    hookToInsertMySettingUI(loadPackageParam);
-
-            Hookers1.
-
-                    hookOnResume(loadPackageParam);            // 触发器
-
-
-//            Hookers1.hookSettingCompatitive(loadPackageParam);
 
 
         }

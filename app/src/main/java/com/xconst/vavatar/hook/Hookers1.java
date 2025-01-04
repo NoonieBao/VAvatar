@@ -27,7 +27,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 
-import dalvik.system.PathClassLoader;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -906,45 +905,45 @@ public class Hookers1 {
         // 这个是底部导航栏的4个按钮，已经劫持到了触发方法
 
 
-        String modelAvatarU0Classname = HookEntry.SETTING.get(HookEntry.modelAvatarU0Classname);
-        String l70k1Classname = HookEntry.SETTING.get(HookEntry.l70k1Classname);
-        String modelBaseK1Classname = HookEntry.SETTING.get(HookEntry.modelBaseK1Classname);
+        String NETWORK_CLASS_NAME = HookEntry.SETTING.get(HookEntry.NETWORK_CLASS_NAME);
+        String METHOD_PARAM_TYPE_NAME = HookEntry.SETTING.get(HookEntry.METHOD_PARAM_TYPE_NAME);
+        String REAL_METHOD_PARAM_TYPE_NAME = HookEntry.SETTING.get(HookEntry.REAL_METHOD_PARAM_TYPE_NAME);
+        String MAIN_UI_CLASS_NAME = HookEntry.SETTING.get(HookEntry.MAIN_UI_CLASS_NAME);
+        String Ui_method_name = "onResume";
         ClassLoader classLoader = loadPackageParam.classLoader;
 
-        String LauncherUIClassname = " com.tencent.mm.ui.LauncherUI";
+        String NETWORK_GET_METHOD_NAME = HookEntry.SETTING.get(HookEntry.NETWORK_GET_METHOD_NAME);
+        String NETWORK_START_METHOD_NAME = HookEntry.SETTING.get(HookEntry.NETWORK_START_METHOD_NAME);
 
         XposedBridge.log(tag + " 尝试注入Vavatar_core");
 
 
-//        Class<?> classIfExists = XposedHelpers.findClassIfExists(LauncherUIBottomTabViewClassname, loadPackageParam.classLoader);
-        Class<?> k1Class = XposedHelpers.findClassIfExists(l70k1Classname, classLoader);
-        Class<?> modelAvatarU0Class = XposedHelpers.findClassIfExists(modelAvatarU0Classname, classLoader);
-        Class<?> modeleBaseK1Class = XposedHelpers.findClassIfExists(modelBaseK1Classname, classLoader);
-        Class<?> LauncherUIClass = XposedHelpers.findClassIfExists(LauncherUIClassname, classLoader);
+        Class<?> NETWORK_CLASS = XposedHelpers.findClassIfExists(NETWORK_CLASS_NAME, classLoader);
+        Class<?> REAL_METHOD_PARAM_TYPE_CLASS = XposedHelpers.findClassIfExists(REAL_METHOD_PARAM_TYPE_NAME, classLoader);
+        Class<?> METHOD_PARAM_TYPE_CLASS = XposedHelpers.findClassIfExists(METHOD_PARAM_TYPE_NAME, classLoader);
+        Class<?> MAIN_UI_CLASS_CLASS = XposedHelpers.findClassIfExists(MAIN_UI_CLASS_NAME, classLoader);
 
-        XposedBridge.log(tag + " k1Class " + k1Class);
-        XposedBridge.log(tag + " modelAvatarU0Class " + modelAvatarU0Class);
-        XposedBridge.log(tag + " modeleBaseK1Class " + modeleBaseK1Class);
-        XposedBridge.log(tag + " LauncherUIClass " + LauncherUIClass);
-
+        XposedBridge.log(tag + " NETWORK_CLASS " + NETWORK_CLASS);
+        XposedBridge.log(tag + " REAL_METHOD_PARAM_TYPE_CLASS " + REAL_METHOD_PARAM_TYPE_CLASS);
+        XposedBridge.log(tag + " METHOD_PARAM_TYPE_CLASS " + METHOD_PARAM_TYPE_CLASS);
+        XposedBridge.log(tag + " MAIN_UI_CLASS_CLASS " + MAIN_UI_CLASS_CLASS);
 
 
-        XposedHelpers.findAndHookMethod(LauncherUIClass, "onResume", new XC_MethodHook() {
+
+
+        XposedHelpers.findAndHookMethod(MAIN_UI_CLASS_CLASS, Ui_method_name, new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
 
-                float persistence = 0.1f;
+                float persistence = 0.8f;
                 if( (Math.random() > persistence) ){
                     XposedBridge.log(tag + "avatar_fun被设计返回，因为概率"+(1-persistence));
                     return;
                 }
 
 
-
-
                 Context context = (Context) param.thisObject;
-
 
                 {
 
@@ -991,9 +990,6 @@ public class Hookers1 {
                             }).start();
                 }
 
-//
-
-                // 尝试下载
 
 
                 {
@@ -1007,42 +1003,31 @@ public class Hookers1 {
                     }
 
 
-                    Object modelAvatarU0 = null;
+                    Object REAL_METHOD_PARAM_INS = null;
 
-                    XposedBridge.log(tag + " entered onActivityResult, now invoke l70.d() ");
-                    Method d = k1Class.getDeclaredMethod("d");
-                    XposedBridge.log(tag + "  d method " + d);
+                    Method NETWORK_GET_METHOD = NETWORK_CLASS.getDeclaredMethod(NETWORK_GET_METHOD_NAME);
+                    XposedBridge.log(tag + NETWORK_GET_METHOD_NAME + NETWORK_GET_METHOD);
 
-                    Object l70_d_ret_p1type = d.invoke(null);
-
-
-                    if (l70_d_ret_p1type != null) {
-                        XposedBridge.log(tag + "  l70.d() ret " + l70_d_ret_p1type);
-
-//                        if (modelAvatarU0ClassConstructor != null) {
-                        XposedBridge.log(tag + "  尝试新建u0");
-//                            modelAvatarU0 = modelAvatarU0ClassConstructor.newInstance(1, finalTargetPath, null, true);
-                        modelAvatarU0 = XposedHelpers.newInstance(modelAvatarU0Class, 1, getTargetPath(context).getAbsolutePath(), null, true);
-                        XposedBridge.log(tag + "  头像目标 " +getTargetPath(context));
+                    Object NETWORK = NETWORK_GET_METHOD.invoke(null);
 
 
-//                        } else {
-//                            XposedBridge.log(tag + "  modelAvatarU0ClassConstructor null ");
-//
-//                        }
-
-                        XposedBridge.log(tag + " finding f method");
-                        Class<?> p1Class = l70_d_ret_p1type.getClass();
-                        Method f = p1Class.getDeclaredMethod("f", modeleBaseK1Class);
-                        XposedBridge.log(tag + "f method of modeleBaseK1Class " + f);
+                    if (NETWORK != null) {
+                        XposedBridge.log(tag + "  NETWORK GOT " + NETWORK);
+                        XposedBridge.log(tag + "  尝试新建实参类型对象");
+                        REAL_METHOD_PARAM_INS = XposedHelpers.newInstance(REAL_METHOD_PARAM_TYPE_CLASS, 1, getTargetPath(context).getAbsolutePath(), null, true);
+                        XposedBridge.log(tag + "  头像目标path " +getTargetPath(context));
 
 
-                        if (f != null) {
+                        XposedBridge.log(tag + " finding "+NETWORK_START_METHOD_NAME+" method");
+                        Class<?> NETWORK_CLASS = NETWORK.getClass();
+                        Method NETWORK_START_METHOD = NETWORK_CLASS.getDeclaredMethod(NETWORK_START_METHOD_NAME, METHOD_PARAM_TYPE_CLASS);
+                        XposedBridge.log(tag + " NETWORK_START_METHOD " + NETWORK_START_METHOD);
+
+
+                        if (NETWORK_START_METHOD != null) {
                             Mp.saveData(context);       // 静茹冷却
-                            XposedBridge.log(tag + " found f method");
-                            XposedBridge.log(tag + System.nanoTime());
-                            f.invoke(l70_d_ret_p1type, modelAvatarU0);
-                            XposedBridge.log(tag + System.nanoTime());
+
+                            NETWORK_START_METHOD.invoke(NETWORK, REAL_METHOD_PARAM_INS);
 
 
                             new Thread(new Runnable() {
