@@ -68,31 +68,31 @@ public class FileUtil {
     public synchronized static void randomSetNext(File dir) {
         File[] files = dir.listFiles();
         final boolean[] hasUnUsed = {false};
-        Object[] bt = Arrays.stream(files)
+        File[] filteredFiles = Arrays.stream(files)
                 .filter(f -> {
+
                     if (f.getName().contains(theUsedJpg)) {
-                        return false;
+                        return false;           //已经使用过的
                     }
                     if (f.getName().contains(nextTick)) {
-                        hasUnUsed[0] =true;
+                        hasUnUsed[0] = true;    //已经准备好了下一张
                     }
                     return true;
-                }).toArray();
+                }).toArray(File[]::new);
 
         if(hasUnUsed[0]){
             XposedBridge.log(TAG+"已存在"+nextAvatar);
             return;
         }
-        if(bt.length==0){
+        if(filteredFiles.length==0){
             XposedBridge.log(TAG+"没有图片");
             return;
         }
 
         Random random = new Random();
+        int randomIndex = random.nextInt(filteredFiles.length);
 
-        int randomIndex = random.nextInt(files.length);
-
-        File target = files[randomIndex];
+        File target = filteredFiles[randomIndex];
         File dist = new File(dir, nextAvatar);
 
         if(!dist.exists()){

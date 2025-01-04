@@ -2,6 +2,9 @@ package com.xconst.vavatar.hook;
 
 import static java.lang.String.format;
 
+
+import com.xconst.vavatar.data.Configuration;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +17,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class HookEntry implements IXposedHookLoadPackage {
 
-    public static final String TAG = "vvavatar ";
+    public static final String TAG = "vvavatar";
 
     final static String packageName2 = "com.tencent.mm";
 
@@ -22,22 +25,6 @@ public class HookEntry implements IXposedHookLoadPackage {
     static String version = null;
 
 
-    final static String NETWORK_CLASS_NAME = "NETWORK_CLASS_NAME";     //（获取f的调用者的方法）的工具类
-    final static String METHOD_PARAM_TYPE_NAME = "modelBaseK1Classname";     //f方法的参数类型
-
-    final static String REAL_METHOD_PARAM_TYPE_NAME = "modelAvatarU0Classname";      // f执行时候参数实例化的类型
-
-    final static String NETWORK_GET_METHOD_NAME = "methodName0";
-    final static String NETWORK_START_METHOD_NAME = "methodName1";
-
-    final static String MAIN_UI_CLASS_NAME = "MAIN_UI_CLASS_NAME";
-
-    final static Map<String, Map<String, String>> SETTING_SET = new HashMap<String, Map<String, String>>() {{
-        
-
-    }};
-
-    static Map<String, String> SETTING;
 
 
     public static boolean initSetting(XC_LoadPackage.LoadPackageParam lpparam) {
@@ -54,11 +41,11 @@ public class HookEntry implements IXposedHookLoadPackage {
             version = String.format("%s (%d)", versionName, versionCode);
             XposedBridge.log(TAG + "mm版本号" + version);
 
-            Set<String> strings = SETTING_SET.keySet();
+            Set<String> strings = Configuration.SETTING_SET.keySet();
             for (String string : strings) {
                 if (version.contains(string)) {
-                    SETTING = SETTING_SET.get(string);
-                    XposedBridge.log(TAG + SETTING);
+                    Configuration.SETTING = Configuration.SETTING_SET.get(string);
+                    XposedBridge.log(TAG + Configuration.SETTING);
                     XposedBridge.log(TAG + "查找到已此版本的配置" + version);
 
                     return true;
