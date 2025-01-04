@@ -7,7 +7,7 @@
 <div align="center">
 
 
-  [![Stars](https://img.shields.io/github/stars/nooniebao/qavatar?label=stars)](https://github.com/nooniebao/vavatar)
+  [![Stars](https://img.shields.io/github/stars/nooniebao/qavatar?label=stars)](https://github.com/nooniebao/qavatar)
 
 </div>
 
