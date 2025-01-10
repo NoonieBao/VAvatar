@@ -46,6 +46,12 @@
 # 版本说明
 > Vavatar的工作基于以下版本，如果Vavatar不能工作，请尝试下载对应版本并覆盖安装
 
+微信 8.0.56 for Android 20250108 Latest
+发布版本: 8.0.56
+更新日期: 2025-01-08 02:47:02 (UTC)
+下载地址: https://dldir1v6.qq.com/weixin/android/weixin8056android2800_0x28003832_arm64.apk
+Sha256: 469125f8e05a8f762a5d5b881e55a91882ad8a6c2643d3728261a23a97216167
+
 微信 8.0.55 for Android 20241218 Latest
 发布版本: 8.0.55(2780)
 更新日期: 2024-12-18 12:34:30 (UTC)

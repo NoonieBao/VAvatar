@@ -448,4 +448,7 @@ public class Hookers1 {
 
     }
 
+    public static void dynamicConfiguration(XC_LoadPackage.LoadPackageParam loadPackageParam) {
+
+    }
 }

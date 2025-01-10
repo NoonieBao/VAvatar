@@ -43,7 +43,7 @@ public class Vui implements View.OnClickListener {
 
 
         TextView pathToAvatar = new TextView(context);
-        pathToAvatar.setText("`默认头像路径:`" + FileUtil.getAvatarDir(context).getAbsolutePath() + "`");
+        pathToAvatar.setText("`默认头像路径`:" + FileUtil.getAvatarDir(context).getAbsolutePath() + "`");
 
 
         LinearLayout updateFreWrapper = new LinearLayout(context);
@@ -92,7 +92,9 @@ public class Vui implements View.OnClickListener {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/NoonieBao/VAvatar"));
             context.startActivity(intent);
         });
-        
+
+        TextView giveMeStarPlz = new TextView(context);
+        giveMeStarPlz.setText("");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title);

@@ -3,10 +3,16 @@ package com.xconst.vavatar.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.xconst.vavatar.hook.HookEntry;
+
+import de.robv.android.xposed.XSharedPreferences;
+
 public class Mp {
 
     private static final String SHARED_PREF_NAME = "vavatar";
     private static SharedPreferences sharedPreferences = null;
+
+    private static XSharedPreferences xSharedPreferences = null;
 
     public static final String LAST_UPLOAD_TIME = "LAST_UPLOAD_TIME"; // 上一次上传时间
     public static final String LAST_DOWNLOAD_TIME = "LAST_DOWNLOAD_TIME"; // 上一次下载时间
@@ -39,12 +45,24 @@ public class Mp {
     private static final String INFO_FROM_DEV_CONTENT = "INFO_FROM_DEV";    //公告内容
 
 
+    @Deprecated
     private static SharedPreferences getSp(Context context) {
 
         if (sharedPreferences == null) {
             sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         }
         return sharedPreferences;
+    }
+
+    private static XSharedPreferences getSpX(Context context) {
+        // 使用 XSharedPreferences 读取指定包名和文件名的 SharedPreferences
+        if (xSharedPreferences == null) {
+            // XSharedPreferences 需要目标包名和文件名作为参数
+            xSharedPreferences = new XSharedPreferences("com.tencent.mm", SHARED_PREF_NAME);
+            // 确保 SharedPreferences 文件对外可读
+            xSharedPreferences.makeWorldReadable();
+        }
+        return xSharedPreferences;
     }
 
 
@@ -112,7 +130,6 @@ public class Mp {
     }
 
     /**
-     *
      * @return 当前时间-目标时间
      */
     public static long calculateTimeDifference(Context context, String key) {
@@ -140,6 +157,7 @@ public class Mp {
         editor.apply();
 
     }
+
     public static void saveData(Context context) {
         long currentTimeSeconds = System.currentTimeMillis() / 1000; // 当前时间戳（精确到秒）
         saveData(context, LAST_UPLOAD_TIME, currentTimeSeconds);
@@ -174,7 +192,7 @@ public class Mp {
 
     public static boolean shouldDownloadNow(Context context) {  //现在是否要下载头像
         boolean aSwitch = downloadSwitch(context);
-        if(!aSwitch){
+        if (!aSwitch) {
             return false;
         }
         long l = calculateTimeDifference(context, LAST_DOWNLOAD_TIME);
