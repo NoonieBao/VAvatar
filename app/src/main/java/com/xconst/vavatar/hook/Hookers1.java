@@ -337,11 +337,11 @@ public class Hookers1 {
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 super.afterHookedMethod(param);
 
-                float persistence = 0.5f;
-                if ((Math.random() > persistence)) {
-                    XposedBridge.log(tag + "avatar_fun被设计返回，因为概率" + (1 - persistence));
-                    return;
-                }
+//                float persistence = 0.6f;
+//                if ((Math.random() > persistence)) {
+//                    XposedBridge.log(tag + "avatar_fun被设计返回，以概率" + (1 - persistence));
+//                    return;
+//                }
 
                 Context context = (Context) param.thisObject;
 

@@ -74,7 +74,7 @@ public class FileUtil {
                     if (f.getName().contains(theUsedJpg)) {
                         return false;           //已经使用过的
                     }
-                    if (f.getName().contains(theUsedJpg)) {
+                    if (f.getName().contains(nextAvatar)) {
                         hasUnUsed[0] = true;    //已经准备好了下一张
                     }
                     return true;

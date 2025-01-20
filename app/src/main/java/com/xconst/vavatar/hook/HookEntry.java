@@ -1,8 +1,10 @@
 package com.xconst.vavatar.hook;
 
+import static com.xconst.vavatar.data.Configuration.initHookParam;
 import static java.lang.String.format;
 
 
+import com.xconst.vavatar.BuildConfig;
 import com.xconst.vavatar.data.Configuration;
 
 import java.io.File;
@@ -27,11 +29,15 @@ public class HookEntry implements IXposedHookLoadPackage {
 
 
 
+    @Deprecated
     public static boolean initSetting(XC_LoadPackage.LoadPackageParam lpparam) {
         if (version != null) {
             return true;
         }
         try {
+            // 在 Java 代码中
+//            String flavorValue = BuildConfig.MY_FLAVOR_VARIABLE;
+
             Class<?> parserCls = XposedHelpers.findClass("android.content.pm.PackageParser", lpparam.classLoader);
             Object parser = parserCls.newInstance();
             File apkPath = new File(lpparam.appInfo.sourceDir);
@@ -67,13 +73,14 @@ public class HookEntry implements IXposedHookLoadPackage {
 
                 equals(packageName2)) {
 
+            initHookParam();
 
-            boolean isGotSetting = initSetting(loadPackageParam);
-
-            if (!isGotSetting) {
-                XposedBridge.log(TAG+"未适配此版本");
-                return;
-            }
+//            boolean isGotSetting = initSetting(loadPackageParam);
+//
+//            if (!isGotSetting) {
+//                XposedBridge.log(TAG+"未适配此版本");
+//                return;
+//            }
 
 
             Hookers1.hookToInsertMySettingUI(loadPackageParam);

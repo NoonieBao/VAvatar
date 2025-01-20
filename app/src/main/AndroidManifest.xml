@@ -30,6 +30,20 @@
             android:name="xposedscope"
             android:resource="@array/xposedScope" />
 
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            >
+            <!-- 指定此 Activity 为默认启动 Activity -->
+            <intent-filter>
+                <!-- 主操作: 启动应用时进行的操作 -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- 默认启动 Activity -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
