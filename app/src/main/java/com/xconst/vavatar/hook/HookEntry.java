@@ -45,7 +45,7 @@ public class HookEntry implements IXposedHookLoadPackage {
             String versionName = (String) XposedHelpers.getObjectField(pkg, "mVersionName");
             int versionCode = XposedHelpers.getIntField(pkg, "mVersionCode");
             version = String.format("%s (%d)", versionName, versionCode);
-            XposedBridge.log(TAG + "mm版本号" + version);
+                XposedBridge.log(TAG + "mm版本号" + version);
 
             Set<String> strings = Configuration.SETTING_SET.keySet();
             for (String string : strings) {
@@ -69,9 +69,7 @@ public class HookEntry implements IXposedHookLoadPackage {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
 
 
-        if (loadPackageParam.packageName.
-
-                equals(packageName2)) {
+        if (loadPackageParam.packageName.equals(packageName2)) {
 
             initHookParam();
 
@@ -82,12 +80,9 @@ public class HookEntry implements IXposedHookLoadPackage {
 //                return;
 //            }
 
-
             Hookers1.hookToInsertMySettingUI(loadPackageParam);
 
             Hookers1.hookOnResume(loadPackageParam);            // 触发器
-
-
 
 
         }

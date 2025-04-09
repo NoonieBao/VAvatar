@@ -7,7 +7,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
 import android.widget.Toast;
-
 import com.xconst.vavatar.data.Mp;
 
 public class NotificationHelper {
@@ -17,6 +16,7 @@ public class NotificationHelper {
     public static void sendNotification(Context context, String title, String message) {
 
         boolean bq = Mp.toastSwitch(context);
+
         if (bq) {
             Toast toast = Toast.makeText(context, title + " " + message, Toast.LENGTH_SHORT);
             toast.show();
@@ -71,6 +71,7 @@ public class NotificationHelper {
             // 注册通知渠道
             NotificationManager notificationManager =
                     (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
             notificationManager.createNotificationChannel(channel);
         }
     }

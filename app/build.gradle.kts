@@ -56,6 +56,10 @@ android {
             dimension = "version"
             buildConfigField("String", "mmVersion", "\"2800_8056\"")
         }
+        create("2820_8057") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2820_8057\"")
+        }
     }
     buildTypes {
         release {

@@ -111,6 +111,19 @@ public class Configuration {
             // com.tencent.tinker.loader.TinkerLoader#tryLoadPatchFilesInternal
 
         }});
+        put("2820_8057", new HashMap<String, String>() {{    //8.0.56    通过
+            put(NETWORK_CLASS_NAME, "bc0.i1");  //静态类
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "g");//方法
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1"); //方法参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");//多态
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+            put(SHARE_TINKER, "com.tencent.tinker.loader.shareutil.ShareTinkerInternals");
+            put(SHARE_TINKER_METHOD_NAME, "isTinkerEnabled");
+            // // com.tencent.tinker.loader.shareutil.ShareTinkerInternals#isTinkerEnabled
+            // com.tencent.tinker.loader.TinkerLoader#tryLoadPatchFilesInternal
+
+        }});
     }};
 
     public static Map<String, String> SETTING;
