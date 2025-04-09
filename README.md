@@ -39,8 +39,16 @@
 > https://uglyavatar.corosy.com/ 可以返回一张丑陋头像. 必须指出: 丑陋头像的生成依赖于txstc55的项目ugly-avatar
 
 
-# 版本说明
-> Vavatar的工作基于以下版本，如果Vavatar不能工作，请尝试下载对应版本并覆盖安装
+# 版本说明（必读）
+
+> 使用Vavatar前，请务必确认设备中安装的APK文件与下方列出的完全一致。仅比较版本号（如8056）不足以确保兼容性，必须Sha256对应。
+> Vavatar的工作基于以下版本，如果Vavatar不能工作，请尝试通过下方链接下载对应版本并覆盖安装
+
+微信 8.0.57 for Android 20250320 Latest
+发布版本: 8.0.57
+更新日期: 2025-03-20 12:33:03 (UTC)
+下载地址: https://dldir1v6.qq.com/weixin/android/weixin8057android2820_0x28003933_arm64.apk
+Sha256: 1d2a9bde01377b607abb7e2a2c9f9e172cb3cb7049fd3f99e49b7b47c048dbd8
 
 微信 8.0.56 for Android 20250108 Latest
 发布版本: 8.0.56
