@@ -110,4 +110,16 @@ Sha256: 8bab0e24bec94c26c898afd9c7454879588926dc7c19e6d688fa9f25b53d7a77
 下载地址: https://dldir1v6.qq.com/weixin/android/weixin8058android2841_0x28003a3f_arm64.apk
 Sha256: aa7f0716ac4e338d070680a47e1fdc8a8e4a3e1d8b3622268bc23054e564a673
 
+微信 8.0.60 for Android 20250609
+发布版本: 8.0.60
+更新日期: 2025-06-09 12:38:53 (UTC)
+下载地址: https://dldir1v6.qq.com/weixin/android/weixin8060android2860_0x28003c39_arm64.apk
+Sha256: db84d6e93b591d3ececdfa9596102920c57e34c8320ed2ee2ff2602d1c40eb23
+
+微信 8.0.61 for Android 20250702
+发布版本: 8.0.61
+更新日期: 2025-07-02 08:26:47 (UTC)
+下载地址: https://dldir1v6.qq.com/weixin/android/weixin8061android2880_0x28003d34_arm64.apk
+Sha256: 682fa29567b523cfcd62fa3687ceea94c962207b7d29f2962d798ce0ac789be3
+
 > 微信历史版本由 https://github.com/DJB-Developer/wechat-android-history-versions 收集
