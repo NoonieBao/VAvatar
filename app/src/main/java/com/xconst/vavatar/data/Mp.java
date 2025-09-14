@@ -45,6 +45,9 @@ public class Mp {
     private static final String INFO_FROM_DEV_CONTENT = "INFO_FROM_DEV";    //公告内容
 
 
+
+    public static final String USE_THE_USED = "USE_THE_USED";    // 是否允许循环
+
     @Deprecated
     private static SharedPreferences getSp(Context context) {
 
@@ -84,6 +87,10 @@ public class Mp {
 
     public static boolean downloadSwitch(Context context) {
         return loadBool(context, DOWNLOAD_SWITCH);
+    }
+
+    public static boolean isUseTheUsed(Context context){
+        return loadBool(context,USE_THE_USED);
     }
 
     public static boolean notifySwitch(Context context) {
@@ -178,6 +185,8 @@ public class Mp {
         SharedPreferences sharedPreferences = getSp(context);
         return sharedPreferences.getBoolean(key, false);
     }
+
+
 
 
     // 计算时间差（秒）

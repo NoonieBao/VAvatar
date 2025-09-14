@@ -4,6 +4,8 @@
     <array name="xposedScope">
 
         <item>com.tencent.mm</item>
+        <!-- <item>com.android.systemui</item>
+        <item>com.miui.home</item> -->
 
     </array>
 

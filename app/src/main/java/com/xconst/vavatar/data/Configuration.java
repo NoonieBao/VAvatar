@@ -48,6 +48,7 @@ public class Configuration {
 
 
         }});
+
         put("2600_8049", new HashMap<String, String>() {{    //8.0.49    通过
             put(NETWORK_CLASS_NAME, "u70.k1");//c8
             put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.k1");//c8
@@ -122,6 +123,54 @@ public class Configuration {
             put(SHARE_TINKER_METHOD_NAME, "isTinkerEnabled");
             // // com.tencent.tinker.loader.shareutil.ShareTinkerInternals#isTinkerEnabled
             // com.tencent.tinker.loader.TinkerLoader#tryLoadPatchFilesInternal
+
+        }});
+        put("2841_8058", new HashMap<String, String>() {{
+            put(NETWORK_CLASS_NAME, "qd0.j1");//c7      //静态类
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1");//c1       // 最终方法的参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");  //8.0.48 c5
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "f");
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+
+
+        }});
+        put("2860_8060", new HashMap<String, String>() {{
+            put(NETWORK_CLASS_NAME, "fe0.j1");//c7      //静态类
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1");//c1       // 最终方法的参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");  //8.0.48 c5
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "g");
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+        }});
+        put("2880_8061", new HashMap<String, String>() {{
+            put(NETWORK_CLASS_NAME, "xe0.j1");//c7      //静态类
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1");//c1       // 最终方法的参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");  //8.0.48 c5
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "g");
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+
+
+        }});
+        put("2900_8062", new HashMap<String, String>() {{
+            put(NETWORK_CLASS_NAME, "of0.j1");//c7      //静态类
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1");//c1       // 最终方法的参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");  //8.0.48 c5
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "g");
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+
+
+        }});
+        put("2920_8063", new HashMap<String, String>() {{
+            put(NETWORK_CLASS_NAME, "ng0.j1");//c7      //静态类
+            put(METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelbase.n1");//c1       // 最终方法的参数类型
+            put(REAL_METHOD_PARAM_TYPE_NAME, "com.tencent.mm.modelavatar.v0");  //8.0.48 c5
+            put(NETWORK_GET_METHOD_NAME, "d");
+            put(NETWORK_START_METHOD_NAME, "g");
+            put(MAIN_UI_CLASS_NAME, "com.tencent.mm.ui.LauncherUI");
+
 
         }});
     }};

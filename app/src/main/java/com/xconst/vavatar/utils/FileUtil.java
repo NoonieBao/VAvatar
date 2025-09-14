@@ -3,6 +3,7 @@ package com.xconst.vavatar.utils;
 import android.content.Context;
 
 
+import com.xconst.vavatar.data.Mp;
 import com.xconst.vavatar.hook.HookEntry;
 
 import java.io.File;
@@ -39,7 +40,7 @@ public class FileUtil {
 
         File file = getAvatarDir(context);
 
-        randomSetNext(file);
+        randomSetNext(file,context);
     }
 
     public synchronized static void avatarChanged(Object arg){
@@ -65,13 +66,13 @@ public class FileUtil {
         XposedBridge.log(TAG +" avatarChanged err");
 
     }
-    public synchronized static void randomSetNext(File dir) {
+    public synchronized static void randomSetNext(File dir,Context context) {
         File[] files = dir.listFiles();
         final boolean[] hasUnUsed = {false};
         File[] filteredFiles = Arrays.stream(files)
                 .filter(f -> {
 
-                    if (f.getName().contains(theUsedJpg)) {
+                    if (f.getName().contains(theUsedJpg) && (!Mp.isUseTheUsed(context))){
                         return false;           //已经使用过的
                     }
                     if (f.getName().contains(nextAvatar)) {

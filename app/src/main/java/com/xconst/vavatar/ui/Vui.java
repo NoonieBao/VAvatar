@@ -54,6 +54,9 @@ public class Vui implements View.OnClickListener {
         updateFreWrapper.setOrientation(LinearLayout.VERTICAL);
         updateFreWrapper.addView(updateFreEdit);
         updateFreWrapper.addView(updateFreTv);
+        CheckBox useTheUsed = generateCheckBox(context,"使用用过的头像");
+        updateFreWrapper.addView(useTheUsed);
+        useTheUsed.setChecked(Mp.isUseTheUsed(context));
 
 
         LinearLayout autoDownloadWrapper = new LinearLayout(context);
@@ -126,6 +129,7 @@ public class Vui implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 Mp.saveData(context, Mp.DOWNLOAD_SWITCH, shouldDownload.isChecked());
+                Mp.saveData(context, Mp.USE_THE_USED, useTheUsed.isChecked());
                 Mp.saveUrl(context, Mp.IMG_URL, downloadUrl.getText().toString());
                 Mp.saveData(context, Mp.DOWNLOAD_FRE, Long.valueOf(downloadFre.getText().toString()));
                 Mp.saveData(context, Mp.UPLOAD_FRE, Long.valueOf(updateFreEdit.getText().toString()));

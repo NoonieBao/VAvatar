@@ -60,6 +60,26 @@ android {
             dimension = "version"
             buildConfigField("String", "mmVersion", "\"2820_8057\"")
         }
+        create("2841_8058") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2841_8058\"")
+        }
+        create("2860_8060") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2880_8061\"")
+        }
+        create("2880_8061") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2880_8061\"")
+        }
+        create("2900_8062") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2900_8062\"")
+        }
+        create("2920_8063") {
+            dimension = "version"
+            buildConfigField("String", "mmVersion", "\"2920_8063\"")
+        }
     }
     buildTypes {
         release {
